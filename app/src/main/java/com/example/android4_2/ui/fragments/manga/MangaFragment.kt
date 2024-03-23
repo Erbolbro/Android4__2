@@ -51,7 +51,7 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
     }
 
     private fun subscribe() {
-        viewModels.getManga().observe(viewLifecycleOwner){
+        viewModels.getManga().observe(viewLifecycleOwner) {
             viewLifecycleOwner.lifecycleScope.launch {
                 mangaAdapter.submitData(it)
             }

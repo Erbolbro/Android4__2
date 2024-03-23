@@ -1,11 +1,9 @@
 package com.example.android4_2.data.paging.source
 
-import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.android4_2.data.remote.apiservices.AnimeApi
 import com.example.android4_2.data.remote.models.anime.Data
-import com.example.android4_2.data.remote.models.manga.DataItem
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -24,7 +22,7 @@ class MangaPagingSource(private val mangaApi: AnimeApi) :
         val position = params.key ?: 1
         return try {
             val response = mangaApi.getManga(limit = pageSize, offset = position)
-            val nextPage = if(response.data.isNotEmpty()) position + 1 else null
+            val nextPage = if (response.data.isNotEmpty()) position + 1 else null
 
             LoadResult.Page(
                 data = response.data,

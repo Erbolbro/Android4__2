@@ -2,7 +2,6 @@ package com.example.android4_2.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android4_2.R
@@ -22,7 +21,7 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
     }
 
     private fun initialize() {
-        binding.viewPager.adapter =  ViewPagerAdapter(this)
+        binding.viewPager.adapter = ViewPagerAdapter(this)
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
