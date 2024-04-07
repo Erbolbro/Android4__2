@@ -1,29 +1,31 @@
 package com.example.android4_2.data.paging.source
 
+import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.android4_2.data.remote.apiservices.AnimeApi
-import com.example.android4_2.data.remote.models.anime.Data
+import com.example.android4_2.data.remote.apiservices.KitsuApi
+import com.example.android4_2.models.DataItem
 import retrofit2.HttpException
 import java.io.IOException
 
-class MangaPagingSource(private val mangaApi: AnimeApi) :
-    PagingSource<Int, Data>() {
+class MangaPagingSource(private val mangaApi: KitsuApi) :
+    PagingSource<Int, DataItem>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Data>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, DataItem>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataItem> {
+
         val pageSize = params.loadSize
         val position = params.key ?: 1
         return try {
             val response = mangaApi.getManga(limit = pageSize, offset = position)
-            val nextPage = if (response.data.isNotEmpty()) position + 1 else null
-
+            val nextPage =
+                Uri.parse(response.links.next).getQueryParameter("page[offset]")!!.toInt()
             LoadResult.Page(
                 data = response.data,
                 prevKey = null,
