@@ -1,14 +1,14 @@
-package com.example.android4_2.models
+package com.example.android4_2.data.remote.models.anime
 
 import com.google.gson.annotations.SerializedName
 
-data class Links(
-    @SerializedName("next")
-    val next: String,
+data class LinksXXXXXXXXXXXXX(
+    @SerializedName("first")
+    val first: String,
     @SerializedName("last")
     val last: String,
-    @SerializedName("prev")
-    val prev: String,
-    @SerializedName("first")
-    val first: String
+    @SerializedName("next")
+    val next: String,
+    @SerializedName("pref")
+    val prev: String
 )
