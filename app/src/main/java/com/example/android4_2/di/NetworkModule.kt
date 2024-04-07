@@ -1,7 +1,6 @@
 package com.example.android4_2.di
 
-import com.example.android4_2.data.remote.apiservices.AnimeApi
-import com.example.android4_2.data.remote.repositories.AnimeRepositories
+import com.example.android4_2.data.remote.apiservices.KitsuApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,40 +18,31 @@ private const val BASE_URL = " https://kitsu.io/api/edge/"
 @InstallIn(SingletonComponent::class)
 
 object NetworkModule {
-    @Module
-    @InstallIn(SingletonComponent::class)
-    object RetrofitClient {
-
-        @Provides
-        @Singleton
-        fun provideOkHttpClient(): OkHttpClient = OkHttpClient().newBuilder()
-            .addInterceptor(
-                HttpLoggingInterceptor().setLevel(
-                    HttpLoggingInterceptor.Level.BODY
-                )
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient().newBuilder()
+        .addInterceptor(
+            HttpLoggingInterceptor().setLevel(
+                HttpLoggingInterceptor.Level.BODY
             )
-            .connectTimeout(60L, TimeUnit.SECONDS)
-            .readTimeout(60L, TimeUnit.SECONDS)
-            .writeTimeout(60L, TimeUnit.SECONDS)
-            .callTimeout(60L, TimeUnit.SECONDS)
-            .build()
-
-        @Provides
-        @Singleton
-        fun retrofitClient(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-
-        @Provides
-        @Singleton
-        fun provideAnimeApi(retrofit: Retrofit): AnimeApi {
-            return retrofit.create(AnimeApi::class.java)
-        }
-    }
+        )
+        .connectTimeout(60L, TimeUnit.SECONDS)
+        .readTimeout(60L, TimeUnit.SECONDS)
+        .writeTimeout(60L, TimeUnit.SECONDS)
+        .callTimeout(60L, TimeUnit.SECONDS)
+        .build()
 
     @Provides
     @Singleton
-    fun provideAnimeRepositories(animeApi: AnimeApi) = AnimeRepositories(animeApi)
+    fun retrofitClient(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideKitsuApi(retrofit: Retrofit): KitsuApi {
+        return retrofit.create(KitsuApi::class.java)
+    }
 }

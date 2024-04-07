@@ -1,6 +1,30 @@
 <resources>
-    <string name="app_name">Android4_2</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Android4_1</string>
+    <string name="names">name\n</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="name">name</string>
+    <string name="anime">Anime</string>
+    <string name="back"><![CDATA[<Back]]></string>
+    <string name="anime_name">Anime name</string>
+    <string name="add_to_library">Add to Library</string>
+    <string name="tv_1999">tv-1999</string>
+    <string name="p3itugp39ehfjpomsxrdyctfuvgyibuhonijpxrdcytfuvgyibuhonijpmokxrdctfoxrdctfvgybhunjimokesxdrctfvgybhunjimrxdmkl_rxdctfokrdctfvgybuhnjimkesxrdctfvgybhunjixrdctfvgybhunij">p3itugp39ehfjpomsxrdyctfuvgyibuhonijpxrdcytfuvgyibuhonijpmokxrdctfoxrdctfvgybhunjimokesxdrctfvgybhunjimrxdmkl,rxdctfokrdctfvgybuhnjimkesxrdctfvgybhunjixrdctfvgybhunij...</string>
+    <string name="view_more">View more</string>
+    <string name="pirate">pirate</string>
+    <string name="rating">(Rating)</string>
+    <string name="rank_30">Rank #30</string>
+    <string name="kitsy_score">Kitsy Score</string>
+    <string name="_89">89%</string>
+    <string name="rank_s">Rank #30</string>
+    <string name="ratinge">(Rating)</string>
+    <string name="rank_30ds">Rank #30</string>
+    <string name="rating_nsa">(Rating)</string>
+    <string name="pirate2">pirate</string>
+    <string name="pirateds">pirate</string>
+    <string name="pirate4">pirate</string>
+    <string name="pirate4w">pirate</string>
+    <string name="todo">TODO</string>
+    <string name="todosa">TODO</string>
+    <string name="todonk">TODO</string>
+    <string name="todosklc">TODO</string>
+    <string name="todosdlcs">TODO</string>
 </resources>
