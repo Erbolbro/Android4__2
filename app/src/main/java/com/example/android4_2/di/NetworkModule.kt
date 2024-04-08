@@ -16,7 +16,6 @@ private const val BASE_URL = " https://kitsu.io/api/edge/"
 
 @Module
 @InstallIn(SingletonComponent::class)
-
 object NetworkModule {
     @Provides
     @Singleton

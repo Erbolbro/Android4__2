@@ -1,25 +1,24 @@
 package com.example.android4_2.data.remote.apiservices
 
-import com.example.android4_2.models.DataItem
-import com.example.android4_2.models.DetailKitsuResponse
-import com.example.android4_2.models.KitsuResponse
+import com.example.android4_2.data.remote.models.DataItem
+import com.example.android4_2.data.remote.models.DetailKitsuResponse
+import com.example.android4_2.data.remote.models.KitsuResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val END_POINT = "anime/"
+private const val END_POINT_ANIME = "anime/"
 private const val END_POINT_MANGA = "manga/"
-private const val END_POINT_ANIME_ID = "anime/{id}"
-private const val END_POINT_MANGA_ID = "manga/{id}"
+private const val END_POINT_KITSU_ID = "anime/{id}"
 
 interface KitsuApi {
-    @GET(END_POINT)
+    @GET(END_POINT_ANIME)
     suspend fun getAnime(
         @Query("page[offset]") offset: Int,
         @Query("page[limit]") limit: Int,
     ): KitsuResponse<DataItem>
 
-    @GET(END_POINT_ANIME_ID)
+    @GET(END_POINT_KITSU_ID)
     suspend fun idAnime(
         @Path("id") id: Int
     ): DetailKitsuResponse
@@ -29,10 +28,5 @@ interface KitsuApi {
         @Query("page[offset]") offset: Int,
         @Query("page[limit]") limit: Int
     ): KitsuResponse<DataItem>
-
-    @GET(END_POINT_MANGA_ID)
-    suspend fun idManga(
-        @Path("id") id: Int
-    ): DetailKitsuResponse
 
 }

@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.android4_2.data.remote.apiservices.KitsuApi
-import com.example.android4_2.models.DataItem
+import com.example.android4_2.data.remote.models.DataItem
 import okio.IOException
 import retrofit2.HttpException
 
@@ -23,8 +23,9 @@ class AnimePagingSource(private val animeApi: KitsuApi) :
         val position = params.key ?: 1
         return try {
             val response = animeApi.getAnime(limit = pageSize, offset = position)
-            val nextPage =
+            val nextPage = if (response.links.next !=null)
                 Uri.parse(response.links.next).getQueryParameter("page[offset]")!!.toInt()
+            else null
             LoadResult.Page(
                 data = response.data,
                 prevKey = null,

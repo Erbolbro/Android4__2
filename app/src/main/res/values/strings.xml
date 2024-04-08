@@ -27,4 +27,6 @@
     <string name="todonk">TODO</string>
     <string name="todosklc">TODO</string>
     <string name="todosdlcs">TODO</string>
+    <string name="manga">"            Manga"</string>
+    <string name="tab_anime">Anime</string>
 </resources>

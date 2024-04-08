@@ -1,4 +1,4 @@
-package com.example.android4_2.models.attributes
+package com.example.android4_2.data.remote.models.attributes
 
 import com.google.gson.annotations.SerializedName
 

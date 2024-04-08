@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.android4_2.data.remote.models.DataItem
 import com.example.android4_2.data.repositories.KitsuRepositories
-import com.example.android4_2.models.DataItem
 import com.example.android4_2.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
@@ -31,18 +30,6 @@ class DetailViewModel @Inject constructor(
         viewModelScope.launch {
             id?.let {
                 kitsuRepositories.getAnimeId(id.toInt()).fold(
-                    onSuccess = {
-                        _detailState.value = UiState.Success(it)
-                    },
-                    onFailure = {
-                        _detailState.value = UiState.Error(it, it.message ?: "unknown error!")
-                    }
-                )
-            }
-        }
-        viewModelScope.launch {
-            id?.let {
-                kitsuRepositories.getMangaId(id.toInt()).fold(
                     onSuccess = {
                         _detailState.value = UiState.Success(it)
                     },

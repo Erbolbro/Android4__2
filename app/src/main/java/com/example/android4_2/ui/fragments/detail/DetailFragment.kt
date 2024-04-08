@@ -26,6 +26,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             viewModel.setId(it)
         }
         subscribeToDetail()
+        goBack()
     }
 
     private fun subscribeToDetail() {
@@ -33,28 +34,30 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             when (uiState) {
                 is UiState.Error -> Log.e("detail", uiState.message, uiState.throwable)
                 UiState.Loading -> view?.let {
-                    Log.i("tag", "subscribeToDetail: ")
                 }
 
                 is UiState.Success -> {
-                    uiState.data.let { data ->
-                        data?.let {
-                            binding.detaiText.text = it.attributes.description
-                            binding.tvDay.text = it.attributes.endDate
-                            binding.tvName.text = it.attributes.title.en
-                            binding.rating.text = it.attributes.ageRating
-                            it.attributes.coverImage?.large?.let { coverImage ->
-                                Glide.with(binding.ivFon).load(coverImage).into(binding.ivFon)
-                            }
-                            Glide.with(binding.ivPoster).load(it.attributes.posterImage.original)
-                                .into(binding.ivPoster)
+                    uiState.data?.let {
+                        binding.detaiText.text = it.attributes.description
+                        binding.tvDay.text = it.attributes.endDate
+                        binding.tvName.text = it.attributes.title.en
+                        binding.rating.text = it.attributes.ageRating
+                        it.attributes.coverImage?.large?.let { coverImage ->
+                            Glide.with(binding.ivFon).load(coverImage).into(binding.ivFon)
                         }
+                        Glide.with(binding.ivPoster).load(it.attributes.posterImage.original)
+                            .into(binding.ivPoster)
                     }
                 }
             }
-            binding.tvBack.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        }
+    }
+
+
+    private fun goBack() {
+        binding.tvBack.setOnClickListener {
+            findNavController().navigateUp()
+
         }
     }
 }

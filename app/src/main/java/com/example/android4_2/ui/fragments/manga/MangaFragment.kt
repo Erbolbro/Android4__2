@@ -16,7 +16,6 @@ import com.example.android4_2.databinding.FragmentMangaBinding
 import com.example.android4_2.ui.adapters.KitsuAdapter
 import com.example.android4_2.ui.fragments.ViewPagerFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -30,12 +29,6 @@ class MangaFragment : Fragment(R.layout.fragment_manga) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setupObserver()
-        viewLifecycleOwner.lifecycleScope.launch {
-            delay(2000)
-            if (binding.progressBar.isVisible) {
-                binding.progressBar.isVisible = false
-            }
-        }
         handlePagingState()
     }
 

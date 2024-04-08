@@ -6,20 +6,21 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.android4_2.data.remote.models.DataItem
 import com.example.android4_2.databinding.ItemAnimeBinding
-import com.example.android4_2.models.DataItem
 
-class KitsuAdapter(val onItemClick:(id:String) ->Unit) : PagingDataAdapter<DataItem, KitsuAdapter.AnimeViewHolder>(diffUtil) {
+class KitsuAdapter(val onItemClick: (id: String) -> Unit) :
+    PagingDataAdapter<DataItem, KitsuAdapter.AnimeViewHolder>(diffUtil) {
     inner class AnimeViewHolder(private val binding: ItemAnimeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            init {
-                binding.root.setOnClickListener {
-                  getItem(absoluteAdapterPosition)?.let {
-                      onItemClick(it.id)
-                  }
+        init {
+            binding.root.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let {
+                    onItemClick(it.id)
                 }
             }
+        }
 
         fun bind(item: DataItem) = with(binding) {
             with(item.attributes) {
@@ -30,6 +31,8 @@ class KitsuAdapter(val onItemClick:(id:String) ->Unit) : PagingDataAdapter<DataI
                     textItem.text = title.en
                 } else if (!title.enJp.isNullOrEmpty()) {
                     textItem.text = title.enJp
+                } else if (!title.ja_jp.isNullOrEmpty()) {
+                    textItem.text = title.ja_jp
                 }
             }
         }

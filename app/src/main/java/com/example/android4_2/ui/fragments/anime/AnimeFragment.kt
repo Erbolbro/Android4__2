@@ -16,7 +16,6 @@ import com.example.android4_2.databinding.FragmentAnimeBinding
 import com.example.android4_2.ui.adapters.KitsuAdapter
 import com.example.android4_2.ui.fragments.ViewPagerFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -31,12 +30,12 @@ class AnimeFragment : Fragment(R.layout.fragment_anime) {
         initialize()
         setupObserver()
         handlePagingState()
-        viewLifecycleOwner.lifecycleScope.launch {
-            delay(2000)
-            if (binding.progressBar.isVisible) {
-                binding.progressBar.isVisible = false
-            }
-        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            delay(2000)
+//            if (binding.progressBar.isVisible) {
+//                binding.progressBar.isVisible = false
+//            }
+
     }
 
     private fun initialize() = with(binding) {

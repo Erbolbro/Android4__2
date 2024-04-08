@@ -1,8 +1,7 @@
-package com.example.android4_2.models
+package com.example.android4_2.data.remote.models
 
-import com.example.android4_2.models.attributes.Attributes
+import com.example.android4_2.data.remote.models.attributes.Attributes
 import com.google.gson.annotations.SerializedName
-
 data class DataItem(
     @SerializedName("id")
     val id: String,
@@ -13,7 +12,8 @@ data class DataItem(
     @SerializedName("self")
     val self: LinksSelf
 )
- data class LinksSelf(
-     @SerializedName("self")
-     val self: String
- )
+
+data class LinksSelf(
+    @SerializedName("self")
+    val self: String
+)

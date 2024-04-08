@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+        //hilt
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     // safe args
@@ -70,8 +71,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.49")
+    kapt("com.google.dagger:hilt-android-compiler:2.49")
     implementation ("org.jetbrains:annotations:RELEASE_VERSION")
 
     // Paging
